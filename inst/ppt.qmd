@@ -1,0 +1,46 @@
+---
+title: "Untitled"
+format: pptx
+editor: visual
+---
+
+##
+
+```{r, results='hide', fig.keep='none'}
+library(dplyr)
+library(ggplot2)
+library(ggplotify)
+
+fig_1 <- ggplot2::qplot(1:10, rnorm(10), geom = "line")
+
+plot(rnorm(10),rnorm(10,1,2))
+
+fig_2 <- recordPlot() 
+dev.off()
+
+
+```
+
+
+```{r}
+fig_2
+```
+
+```{r, fig.keep='all', results='asis'}
+
+ojjs <- ls()
+
+for(i in 1:length(ojjs)){
+  
+  if( "ggplot" %in% class(get(ojjs[i]))) {
+    print("1")
+    print(get(ojjs[i]))
+  } else if ("recordedplot" %in% class(get(ojjs[i]))){
+    
+    print("2")
+    replayPlot(get(ojjs[i]))
+  }
+}
+
+
+```

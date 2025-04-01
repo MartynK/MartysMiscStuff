@@ -1,0 +1,39 @@
+---
+title: "Figures in memory"
+format: pptx
+editor: visual
+---
+
+##
+
+```{r, results='hide', fig.keep='none'}
+#library(dplyr)
+library(ggplot2)
+
+load(here::here("inst","2figsinmemory.RData"))
+
+
+```
+
+
+```{r}
+
+ojjs <- ls()
+
+ps <- list()
+
+for(i in 1:length(ojjs)){
+  
+  if( "ggplot" %in% class(get(ojjs[i]))) {
+    #print("gggg")
+    ps[[i]] <- print(get(ojjs[i]))
+  } else if ("recordedplot" %in% class(get(ojjs[i]))){
+    #print("pppp")
+    ps[[i]] <- replayPlot(get(ojjs[i]))
+  }
+}
+
+ps
+
+
+```

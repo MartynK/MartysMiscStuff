@@ -1,0 +1,393 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={lme4 cheat sheet},
+  pdfauthor={Clay Ford},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{lme4 cheat sheet}
+\author{Clay Ford}
+\date{Fall 2015}
+
+\begin{document}
+\maketitle
+
+A cheat sheet for fitting and assessing Linear Mixed-Effect Models using
+\texttt{lme4}.
+
+\section{\texorpdfstring{Limitations of \texttt{lme4} (or what it cannot
+do that \texttt{nlme} can
+do)}{Limitations of lme4 (or what it cannot do that nlme can do)}}\label{limitations-of-lme4-or-what-it-cannot-do-that-nlme-can-do}
+
+\begin{itemize}
+\item
+  \texttt{lme4} does not allow the modeling of heteroscedastic
+  within-group errors. It only fits models with independent residual
+  errors.
+\item
+  \texttt{lme4} only models two types of covariance matrices for random
+  effects: general and diagonal. A general covariance matrix has
+  separate variances for each random effect and covariances between the
+  random effects. A diagonal covariance matrix has separate variances
+  for each random effect and no covariance between random effects.
+\end{itemize}
+
+\section{\texorpdfstring{Features of \texttt{lme4} (or what it can do
+that \texttt{nlme} cannot
+do)}{Features of lme4 (or what it can do that nlme cannot do)}}\label{features-of-lme4-or-what-it-can-do-that-nlme-cannot-do}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{lme4} provides facilites for modeling generalized linear
+  mixed-effects models. (see \texttt{glmer})
+\item
+  \texttt{lme4} can fit models with \emph{crossed} random effects.
+\item
+  \texttt{lme4} uses efficient computational algorithms based on
+  sparse-matrix representations that make it suitable for large data
+  sets.
+\end{itemize}
+
+\section{Format of Data}\label{format-of-data}
+
+Data should be a data frame in long format. That is, one row per
+observation of the response variable. For example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(lme4}\SpecialCharTok{::}\NormalTok{cake)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   replicate recipe temperature angle temp
+## 1         1      A         175    42  175
+## 2         1      A         185    46  185
+## 3         1      A         195    47  195
+## 4         1      A         205    39  205
+## 5         1      A         215    53  215
+## 6         1      A         225    42  225
+\end{verbatim}
+
+\section{Fitting Models}\label{fitting-models}
+
+To fit linear mixed-effects model, use the \texttt{lmer()} function. The
+formular for \texttt{lmer} allows you to express both fixed and random
+effects. Random effects are defined in parentheses. Random effects are
+conditioned on groups, typically groups with uninteresting or
+\texttt{random} levels. The conditioning is defined with a pipe:
+\texttt{\textbar{}}. Two pipes, \texttt{\textbar{}\textbar{}}, specify
+fitting a model with a diagonal covariance structure for the random
+effects. (i.e., assume multiple random effects are not correlated.)
+
+Below, \texttt{dv} is the dependent variable, \texttt{x1} is a
+predictor, and \texttt{g} is a grouping indicator (for example, subject
+ID)
+
+\textbf{Random intercept for each level of \texttt{g}}:
+\texttt{lme01\ \textless{}-\ lmer(dv\ \textasciitilde{}\ x1\ +\ (1\ \textbar{}\ g),\ data=df)}
+
+\textbf{Random slope for each level of \texttt{g}}:
+\texttt{lme02\ \textless{}-\ lmer(dv\ \textasciitilde{}\ x1\ +\ (0\ +\ x1\ \textbar{}\ g),\ data=df)}
+
+\textbf{Correlated random slope and intercept for each level of
+\texttt{g}}:
+\texttt{lme03\ \textless{}-\ lmer(dv\ \textasciitilde{}\ x1\ +\ (x1\ \textbar{}\ g),\ data=df)}
+
+\textbf{Uncorrelated random slope and intercept for each level of
+\texttt{g}}:
+\texttt{lme04\ \textless{}-\ lmer(dv\ \textasciitilde{}\ x1\ +\ (x1\ \textbar{}\textbar{}\ g),\ data=df)}
+
+\subsection{Multilevel models}\label{multilevel-models}
+
+For models with nested grouping factors (aka multilevel models), use
+\texttt{/} to indicate nesting. Below \texttt{tch} is nested in
+\texttt{sch}. For example, teachers nested within schools.
+
+\textbf{Random intercept for each level of \texttt{sch} and for each
+level of \texttt{tch} in \texttt{sch} }:
+\texttt{lme01\ \textless{}-\ lmer(dv\ \textasciitilde{}\ x1\ +\ (1\ \textbar{}\ sch/tch),\ data=df)}
+
+\textbf{Random slope for each level of \texttt{sch} and for each level
+of \texttt{tch} in \texttt{sch}}:
+\texttt{lme02\ \textless{}-\ lmer(dv\ \textasciitilde{}\ x1\ +\ (0\ +\ x1\ \textbar{}\ sch/tch),\ data=df)}
+
+\textbf{Correlated random slope and intercept for each level of
+\texttt{sch} and for each level of \texttt{tch} in \texttt{sch}}:
+\texttt{lme03\ \textless{}-\ lmer(dv\ \textasciitilde{}\ x1\ +\ (x1\ \textbar{}\ sch/tch),\ data=df)}
+
+\textbf{Uncorrelated random slope and intercept for each level of
+\texttt{sch} and for each level of \texttt{tch} in \texttt{sch}}:
+\texttt{lme03\ \textless{}-\ lmer(dv\ \textasciitilde{}\ x1\ +\ (x1\ \textbar{}\textbar{}\ sch/tch),\ data=df)}
+
+\section{Extracting and viewing model
+information}\label{extracting-and-viewing-model-information}
+
+Say your model is saved as object \texttt{lme01}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{summary(lme01)} - View summary of \texttt{lme01}
+\item
+  \texttt{fixef(lme01)} - View estimated fixed effect coefficients
+\item
+  \texttt{ranef(lme01)} - View predicted random effects
+\item
+  \texttt{coef(lme01)} - View coefficients for LMM for \emph{each group}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{VarCorr(lme01)} - View estimated variance parameters
+  \end{itemize}
+\item
+  \texttt{confint(lme01)} - Compute confidence intervals on the
+  parameters (cutoffs based on the likelihood ratio test)
+\item
+  \texttt{confint(lme1,\ method="boot")} = Compute confidence intervales
+  on the parameters (computed from the bootstrap distribution)
+\item
+  \texttt{anova(lme1)} - Assess significance of fixed-effect factors
+\item
+  \texttt{predict(lme1)} - View within-group fitted values for
+  \texttt{lme01}
+\item
+  \texttt{predict(lme1,\ re.form=NA)} - View population fitted values
+  for \texttt{lme01}
+\end{itemize}
+
+\section{Diagnostic plots}\label{diagnostic-plots}
+
+Say we fit the folllowing LMM:
+\texttt{lme1\ \textless{}-\ lmer(y\ \textasciitilde{}\ x\ +\ (x\ \textbar{}\ id),\ data=df)}
+
+\subsection{Within-group errors}\label{within-group-errors}
+
+Plots for examining the assumption that within-group errors are normally
+distributed, centered at 0, and have constant variance.
+
+\textbf{standarized residuals vs fitted values (is the scatter
+uniform?)}: \texttt{plot(lme1)}
+
+\textbf{standardized residuals versus fitted values by x (is the scatter
+uniform within groups?)}:
+\texttt{plot(lme1,\ form\ =\ resid(.)\ \textasciitilde{}\ fitted(.)\ \textbar{}\ x)}
+
+\textbf{box-plots of residuals by id (are they centered at 0?)}:
+\texttt{plot(lme1,\ form\ =\ id\ \textasciitilde{}\ resid(.))}
+
+\textbf{To assess normality of residuals (does plot seem to lie on
+straight line?)}: \texttt{qqnorm(resid(lme1))}
+
+\subsection{Random effects}\label{random-effects}
+
+Plots for examining the assumption that random effects are normally
+distributed, centered at 0, and have constant variance.
+
+\textbf{To check constant variance of random effects (is the scatter
+uniform?)}: \texttt{plot(ranef(lme1))}
+
+\textbf{To assess normality of random effects (does plot seem to lie on
+straight line?)}: \texttt{lattice::qqmath(ranef(lmeEng2))}
+
+\subsection{Model fit}\label{model-fit}
+
+\textbf{observed versus fitted values by id (check fit of model)}:
+\texttt{plot(lme1,\ y\ \textasciitilde{}\ fitted(.)\ \textbar{}\ id)}
+
+\section{Comparing models}\label{comparing-models}
+
+When it comes to hypothesis testing, the choice of ML vs REML estimation
+is important:
+
+\begin{itemize}
+\tightlist
+\item
+  To compare two models fit by \textbf{REML}, each must have the same
+  fixed effects.
+\item
+  To compare two models fit by \textbf{ML}, one must be nested within
+  the other.
+\end{itemize}
+
+In \texttt{lmer}, REML is the default. Set \texttt{REML=FALSE} to use ML
+estimation.
+
+\subsection{Comparing nested models}\label{comparing-nested-models}
+
+Say we fit two models:
+\texttt{lme1\ \textless{}-\ lmer(y\ \textasciitilde{}\ x\ +\ z\ +\ x:z\ +\ (1\ \textbar{}\ g),\ data=df)}
+\texttt{lme2\ \textless{}-\ lmer(y\ \textasciitilde{}\ x\ +\ z\ +\ (1\ \textbar{}\ g),\ data=df)}
+
+The following refits the models with ML and compares them via hypothesis
+test: \texttt{anova(lme1,\ lme2)}
+
+To supress refitting with ML (only do this if both models have same
+fixed effects): \texttt{anova(lme1,\ lme2,\ refit\ =\ FALSE)}
+
+\subsection{Dropping terms from a
+model}\label{dropping-terms-from-a-model}
+
+The \texttt{drop1} function will drop all possible single fixed-effect
+terms. We begin with a model and ask, ``what would happen if we dropped
+a term''?
+
+Let's say your model is
+\texttt{y\ \textasciitilde{}\ x\ +\ r\ +\ z\ +\ (1\textbar{}g)}, fitted
+as object \texttt{lme1}.
+
+\texttt{drop1(lme1,\ test="Chisq")} performs a series of Likelihood
+Ratio hypothesis tests to see how model is affected by individually
+dropping \texttt{x}, dropping \texttt{r}, and dropping \texttt{z}.
+
+Without specifying \texttt{test="Chisq"}, we get a print out of how AIC
+changes when terms are dropped.
+
+\subsection{Comparing models with different random
+effects}\label{comparing-models-with-different-random-effects}
+
+The typical test is whether or not a random effect is necessary. This
+means testing if the variance of a random effect is 0. But variances are
+positive and 0 is at the boundary of the range of possible values. The
+result is that the standard hypothesis test (ie, a likelihood ratio
+test) is \emph{conservative}. The p-value is too high. If you have a
+small p-value (say \textless{} 0.001), that's not a problem. If you have
+a p-value close to significance, (say about 0.10) you may want to
+consider calculating a corrected p-value using a \emph{mixture of
+chi-square distributions}.
+
+A likelihood ratio test (LRT) statistic has a chi-square distribution
+with degrees of freedom equal to the difference in parameters between
+two models. Let's say our LRT is on 2 degrees of freedom. The null
+distribution of this test statistic is NOT a chi-square with 2 degrees
+of freedom since our null value (variance = 0) is on the boundary of the
+parameter space. It's been suggested that a 50:50 mixture,
+\(0.5\chi_{df}^{2} + 0.5\chi_{df-1}^{2}\), can serve as a reference null
+distribution for computing the p-value. But this is still only an
+approximation.
+
+\textbf{Example}: Say we fit two models:
+
+\texttt{lmm1\ \textless{}-\ lmer(wt\ \textasciitilde{}\ weeks\ +\ treat\ +\ (1\ \textbar{}\ subject),\ data=ratdrink)}
+\texttt{lmm2\ \textless{}-\ lmer(wt\ \textasciitilde{}\ treat\ +\ weeks\ +\ (weeks\ \textbar{}\ subject),\ data=ratdrink)}
+
+Is the \texttt{weeks} random effect necessary?
+
+\texttt{aout\ \textless{}-\ na.omit(anova(lmm1,\ lmm2,\ refit\ =\ FALSE))\ \#\ drop\ NAs}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# function for 50:50 mixture}
+\NormalTok{pvalMix }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(stat,df)\{}
+  \FloatTok{0.5}\SpecialCharTok{*}\FunctionTok{pchisq}\NormalTok{(stat, df, }\AttributeTok{lower.tail =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+    \FloatTok{0.5}\SpecialCharTok{*}\FunctionTok{pchisq}\NormalTok{(stat, df}\DecValTok{{-}1}\NormalTok{, }\AttributeTok{lower.tail =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{pvalMix(aout\$Chisq,\ aout\$\textasciigrave{}Chi\ Df\textasciigrave{})}
+
+\end{document}
