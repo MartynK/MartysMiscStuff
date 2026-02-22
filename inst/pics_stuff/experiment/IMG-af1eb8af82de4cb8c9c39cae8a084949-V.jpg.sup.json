@@ -1,0 +1,32 @@
+{
+  "title": "IMG-af1eb8af82de4cb8c9c39cae8a084949-V.jpg",
+  "description": "",
+  "imageViews": "5",
+  "creationTime": {
+    "timestamp": "1610286477",
+    "formatted": "Jan 10, 2021, 1:47:57 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1546161127",
+    "formatted": "Dec 30, 2018, 9:12:07 AM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipM7mNFyAoimDe3hQ5RG4PsRHknKqgNmmJxTtMrE",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": "Viber Images"
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  },
+  "appSource": {
+    "androidPackageName": "com.viber.voip"
+  }
+}

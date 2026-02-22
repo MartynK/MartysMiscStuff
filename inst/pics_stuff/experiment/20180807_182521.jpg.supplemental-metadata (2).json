@@ -1,0 +1,36 @@
+{
+  "title": "20180807_182521.jpg",
+  "description": "",
+  "imageViews": "4",
+  "creationTime": {
+    "timestamp": "1613099687",
+    "formatted": "Feb 12, 2021, 3:14:47 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1533659121",
+    "formatted": "Aug 7, 2018, 4:25:21 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.5130556,
+    "longitude": 19.0572222,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.5130556,
+    "longitude": 19.0572222,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipPuHqFFxg2rqCOvqogCF1PBASJT6uND3bspfY0X",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

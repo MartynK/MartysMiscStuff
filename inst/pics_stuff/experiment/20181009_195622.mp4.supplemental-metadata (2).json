@@ -1,0 +1,36 @@
+{
+  "title": "20181009_195622.mp4",
+  "description": "",
+  "imageViews": "23",
+  "creationTime": {
+    "timestamp": "1613101276",
+    "formatted": "Feb 12, 2021, 3:41:16 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1539107793",
+    "formatted": "Oct 9, 2018, 5:56:33 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4428,
+    "longitude": 19.1354,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4428,
+    "longitude": 19.1354,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNdOZIuhqTek9lW7buJxXSFQrKxXMceGZZxugsy",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

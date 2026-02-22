@@ -1,0 +1,36 @@
+{
+  "title": "20180919_180448.jpg",
+  "description": "",
+  "imageViews": "3",
+  "creationTime": {
+    "timestamp": "1613099734",
+    "formatted": "Feb 12, 2021, 3:15:34 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1537373088",
+    "formatted": "Sep 19, 2018, 4:04:48 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": -0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipN2D5sqD_gjXPCeSiKUB3HuUNSuugSL8lPcLXLt",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

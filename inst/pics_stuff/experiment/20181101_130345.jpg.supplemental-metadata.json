@@ -1,0 +1,36 @@
+{
+  "title": "20181101_130345.jpg",
+  "description": "",
+  "imageViews": "6",
+  "creationTime": {
+    "timestamp": "1612094825",
+    "formatted": "Jan 31, 2021, 12:07:05 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1541073825",
+    "formatted": "Nov 1, 2018, 12:03:45 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": -0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipOPAq8yKumCOWqqPgDE6VDofLy-xdLcy0cfd2vL",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

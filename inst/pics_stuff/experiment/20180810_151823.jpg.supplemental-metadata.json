@@ -1,0 +1,36 @@
+{
+  "title": "20180810_151823.jpg",
+  "description": "",
+  "imageViews": "3",
+  "creationTime": {
+    "timestamp": "1612094453",
+    "formatted": "Jan 31, 2021, 12:00:53 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1533907103",
+    "formatted": "Aug 10, 2018, 1:18:23 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.518333299999995,
+    "longitude": 19.0644444,
+    "altitude": 165.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.518333299999995,
+    "longitude": 19.0644444,
+    "altitude": 165.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNFV1U6OoU1VtSjttTuDaPfQq9ncmPL1k7q2esU",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

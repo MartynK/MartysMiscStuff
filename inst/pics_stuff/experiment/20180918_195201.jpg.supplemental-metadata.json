@@ -1,0 +1,36 @@
+{
+  "title": "20180918_195201.jpg",
+  "description": "",
+  "imageViews": "6",
+  "creationTime": {
+    "timestamp": "1612094487",
+    "formatted": "Jan 31, 2021, 12:01:27 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1537293121",
+    "formatted": "Sep 18, 2018, 5:52:01 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.5133333,
+    "longitude": 19.0577778,
+    "altitude": 159.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.5133333,
+    "longitude": 19.0577778,
+    "altitude": 159.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipMDGfFn9hF6yV1F10D3JZiARB0_sns95rSGS4Fz",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

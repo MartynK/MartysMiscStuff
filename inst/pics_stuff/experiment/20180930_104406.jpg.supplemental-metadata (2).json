@@ -1,0 +1,36 @@
+{
+  "title": "20180930_104406.jpg",
+  "description": "",
+  "imageViews": "1",
+  "creationTime": {
+    "timestamp": "1613099807",
+    "formatted": "Feb 12, 2021, 3:16:47 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1538318646",
+    "formatted": "Sep 30, 2018, 2:44:06 PM UTC"
+  },
+  "geoData": {
+    "latitude": 45.50333330000001,
+    "longitude": -73.5869444,
+    "altitude": 144.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 45.50333330000001,
+    "longitude": -73.5869444,
+    "altitude": 144.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipM6tkgFLKhHVLT0QdRcFjAgaxOmSBxIaiTK3sPc",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

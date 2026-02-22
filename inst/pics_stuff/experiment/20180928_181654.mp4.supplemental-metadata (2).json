@@ -1,0 +1,36 @@
+{
+  "title": "20180928_181654.mp4",
+  "description": "",
+  "imageViews": "2",
+  "creationTime": {
+    "timestamp": "1613101267",
+    "formatted": "Feb 12, 2021, 3:41:07 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1538173025",
+    "formatted": "Sep 28, 2018, 10:17:05 PM UTC"
+  },
+  "geoData": {
+    "latitude": 43.6457,
+    "longitude": -79.3793,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 43.6457,
+    "longitude": -79.3793,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipMBuSBYfj3h7aek9K6sECrmf57x_yZ7_UFdbAnV",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

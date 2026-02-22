@@ -1,0 +1,36 @@
+{
+  "title": "20181110_162743.jpg",
+  "description": "",
+  "imageViews": "8",
+  "creationTime": {
+    "timestamp": "1612094839",
+    "formatted": "Jan 31, 2021, 12:07:19 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1541863663",
+    "formatted": "Nov 10, 2018, 3:27:43 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.5133333,
+    "longitude": 19.057499999999997,
+    "altitude": -0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.5133333,
+    "longitude": 19.057499999999997,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNuQ_CMdwNshKnpH2B84IvP978xbirWgJX346PI",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

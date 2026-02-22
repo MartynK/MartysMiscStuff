@@ -1,0 +1,29 @@
+{
+  "title": "20181211_074726.jpg",
+  "description": "",
+  "imageViews": "1",
+  "creationTime": {
+    "timestamp": "1613099916",
+    "formatted": "Feb 12, 2021, 3:18:36 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1544510846",
+    "formatted": "Dec 11, 2018, 6:47:26 AM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipN2qxZ8gUBr-K8fBuciIj4nQKMeDTaD4lq55wVP",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

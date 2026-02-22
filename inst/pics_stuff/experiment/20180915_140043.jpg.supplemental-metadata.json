@@ -1,0 +1,36 @@
+{
+  "title": "20180915_140043.jpg",
+  "description": "",
+  "imageViews": "7",
+  "creationTime": {
+    "timestamp": "1612094473",
+    "formatted": "Jan 31, 2021, 12:01:13 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1537012842",
+    "formatted": "Sep 15, 2018, 12:00:42 PM UTC"
+  },
+  "geoData": {
+    "latitude": 46.8094444,
+    "longitude": 17.5461111,
+    "altitude": 196.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 46.8094444,
+    "longitude": 17.5461111,
+    "altitude": 196.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNOtHEPBy6z8ZZ5uzr-gynHMiVf_XlXfjVYIKTu",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

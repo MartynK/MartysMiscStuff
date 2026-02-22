@@ -1,0 +1,36 @@
+{
+  "title": "20181218_090141.jpg",
+  "description": "",
+  "imageViews": "4",
+  "creationTime": {
+    "timestamp": "1612094891",
+    "formatted": "Jan 31, 2021, 12:08:11 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1545120101",
+    "formatted": "Dec 18, 2018, 8:01:41 AM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4430556,
+    "longitude": 19.134999999999998,
+    "altitude": -0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4430556,
+    "longitude": 19.134999999999998,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipPGjGtHwHD_JJrVTCT7AF_XZxfJAESLKQkvDsZg",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

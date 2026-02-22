@@ -1,0 +1,36 @@
+{
+  "title": "20181002_183003.jpg",
+  "description": "",
+  "imageViews": "22",
+  "creationTime": {
+    "timestamp": "1612094599",
+    "formatted": "Jan 31, 2021, 12:03:19 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1538519403",
+    "formatted": "Oct 2, 2018, 10:30:03 PM UTC"
+  },
+  "geoData": {
+    "latitude": 45.4591667,
+    "longitude": -73.755,
+    "altitude": 3.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 45.4591667,
+    "longitude": -73.755,
+    "altitude": 3.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipN6mUFnJ88CY_UQqIMGrEYYfIwmKkWhOP7BIvib",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

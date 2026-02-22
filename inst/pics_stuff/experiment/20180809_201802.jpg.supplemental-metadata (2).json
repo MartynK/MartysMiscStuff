@@ -1,0 +1,36 @@
+{
+  "title": "20180809_201802.jpg",
+  "description": "",
+  "imageViews": "3",
+  "creationTime": {
+    "timestamp": "1613099687",
+    "formatted": "Feb 12, 2021, 3:14:47 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1533838682",
+    "formatted": "Aug 9, 2018, 6:18:02 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.5130556,
+    "longitude": 19.0488889,
+    "altitude": 149.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.5130556,
+    "longitude": 19.0488889,
+    "altitude": 149.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNQaNI3WeyRbEt_46MhIuhZkMg2XFgnkeaIojOO",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

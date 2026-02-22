@@ -1,0 +1,29 @@
+{
+  "title": "IMG_20181225_134435_0.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1613099999",
+    "formatted": "Feb 12, 2021, 3:19:59 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1545741873",
+    "formatted": "Dec 25, 2018, 12:44:33 PM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipPrWDT0r-WJeiHZWKqd69GA5EEcCJ6D3PD2vLa0",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

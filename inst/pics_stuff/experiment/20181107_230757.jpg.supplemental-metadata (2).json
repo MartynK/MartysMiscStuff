@@ -1,0 +1,36 @@
+{
+  "title": "20181107_230757.jpg",
+  "description": "",
+  "imageViews": "1",
+  "creationTime": {
+    "timestamp": "1613099894",
+    "formatted": "Feb 12, 2021, 3:18:14 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1541628477",
+    "formatted": "Nov 7, 2018, 10:07:57 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.442777799999995,
+    "longitude": 19.134999999999998,
+    "altitude": 137.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.442777799999995,
+    "longitude": 19.134999999999998,
+    "altitude": 137.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipMetLGoaja41uECLCu55sm9o70vJZru3TVp0i1p",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

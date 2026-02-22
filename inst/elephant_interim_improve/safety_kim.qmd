@@ -1,0 +1,325 @@
+---
+title: "Interim safety analysis – PANCREATITIS-RCT"
+author: "Farkas Nelli, Márton Kiss MD"
+format: html
+toc: true
+execute:
+  echo: false
+lang: en
+---
+
+```{r setup, message=FALSE,warning=FALSE}
+# ──────────────────────────────────────────────────────────────
+# Libraries, data import, labels, helper functions – ALL IN ONE
+# ──────────────────────────────────────────────────────────────
+library(tidyverse)
+library(gtsummary)
+library(kableExtra)
+library(labelled)
+library(glue)
+set.seed(666)
+
+# 1 ── Import ──────────────────────────────────────────────────
+dat <- readxl::read_xlsx(
+  "ELEFANT_SAFETY_stat.xlsx",
+  sheet = "stat",                            # ← explicit
+  na    = c("999999","888888","","NA")
+) |>
+  janitor::clean_names() |>
+  mutate(across(where(is.character), factor))
+
+# 2 ── Human-readable labels (add / edit freely) ───────────────
+var_labels <- c(
+  patient_id                          = "Patient ID",
+  internal_patient_number             = "Internal patient #",
+  sex                                 = "Sex",
+  date_of_birth                       = "Date of birth",
+  age_at_form_start                   = "Age at enrolment (y)",
+  random_group                        = "Randomisation group",
+  terapy_group                        = "Therapy group",
+  time                                = "Randomisation date",
+  other_treatment                     = "Other treatment given?",
+  if_yes_what                         = "Other treatment – details",
+  time_2                              = "Other treatment – date",
+  intensive_care                      = "ICU admission",
+  pancreatic_complication             = "Pancreatic complication",
+  type                                = "Complication type",
+  organ_failure                       = "Any organ failure",
+  organ                               = "Failed organ(s)",
+  in_hospital_mortality               = "In-hospital mortality",
+  mortality_because_of_a_pancreatic_complication =
+    "Death attributed to pancreatic complication",
+  severity                            = "Clinical severity",
+  post_discharge_mortality            = "Post-discharge mortality",
+  last_appearance                     = "Last follow-up",
+  date_of_mortality                   = "Date of death",
+  ap_recurrence_since_index_admission = "AP recurrence since index",
+  infection                           = "Infection",
+  reason_for_the_infection            = "Infection – site/agent",
+  fever                               = "Fever (>38 °C)",
+  time_day                            = "Fever – onset (days)",
+  fever_day                           = "Fever – duration (days)",
+  abdominal_pain                      = "Abdominal pain",
+  abdominal_pain_time_day             = "Abdominal pain – onset (days)",
+  o2_need                             = "O₂ requirement",
+  o2_need_time                        = "O₂ start – date",
+  o2_need_day                         = "O₂ duration (days)",
+  thrombosis                          = "Thrombosis",
+  dyspnoe                             = "Dyspnoea",
+  dyspnoe_time                        = "Dyspnoea – onset (days)",
+  dyspnoe_day                         = "Dyspnoea – duration (days)",
+  tachycardia                         = "Tachycardia (>100 bpm)",
+  tachycardia_time                    = "Tachycardia – onset (days)",
+  tachycardia_time_2                  = "Tachycardia – duration (days)",
+  deterioration_of_kidney_function    = "Worsening kidney function",
+  plasmapheresis_related_complications= "Plasmapheresis-related AE"
+)
+
+dat <- set_variable_labels(dat, .labels = var_labels)
+
+# 3 ── Helper functions ────────────────────────────────────────
+summarise_by_group <- function(df, vars, grp) {
+  df |>
+    select(all_of(c(grp, vars))) |>
+    tbl_summary(
+      by      = all_of(grp),
+      type    = all_categorical() ~ "categorical",
+      missing = "no"
+    ) |>
+    add_p(test = everything() ~ "fisher.test") |>
+    bold_p() |>
+    # add_q() |>
+    modify_caption(glue("Adverse events by **{grp}**"))
+}
+
+pairwise_cat <- function(df, var, grp) {
+  g       <- na.omit(unique(df[[grp]]))
+  combs   <- combn(g, 2, simplify = FALSE)
+  raw_p   <- numeric(length(combs))
+
+  for (i in seq_along(combs)) {
+    sub   <- df[df[[grp]] %in% combs[[i]], ]
+    tbl   <- table(sub[[var]], sub[[grp]])
+    raw_p[i] <- fisher.test(tbl, simulate.p.value = TRUE)$p.value
+  }
+
+  out <- tibble(
+          Comparison      = sapply(combs, paste, collapse = " vs "),
+          `p (raw)`       = raw_p,
+          `p (BH adj.)`   = p.adjust(raw_p, method = "BH")
+        ) |>
+        mutate(across(starts_with("p"), ~ifelse(.x < .001, "<0.001", 
+                                                sprintf("%.3f", .x))))
+
+  kbl(out,
+      caption = glue("Pairwise Fisher – {var} by {grp}"),
+      align   = "c") |>
+    kable_classic(html_font = "sans-serif") |>
+    column_spec(3, bold = TRUE, color = ifelse(out$`p (BH adj.)` < .05, 
+                                               "red", "black")) 
+}
+
+pairwise_cont <- function(df, var, grp) {
+  aov_mod <- aov(df[[var]] ~ df[[grp]])
+  tk      <- TukeyHSD(aov_mod)[[1]]
+  out <- as_tibble(tk, rownames = "Comparison") |>
+         transmute(
+           Comparison   = Comparison,
+           `p (raw)`    = `p adj`,               # Tukey already adjusts for #pairs
+           `p (BH adj.)`= p.adjust(`p adj`, method = "BH")
+         ) |>
+         mutate(across(starts_with("p"), ~ifelse(.x < .001, "<0.001", 
+                                                 sprintf("%.3f", .x))))
+
+  kbl(out,
+      caption = glue("Tukey HSD – {var} by {grp}"),
+      align   = "c") |>
+    kable_classic(html_font = "sans-serif") |>
+    column_spec(3, bold = TRUE, color = ifelse(out$`p (BH adj.)` < .05, 
+                                               "red", "black")) |>
+    print()
+}
+
+plot_ae_bar <- function(df, vars, grp) {
+  to_numeric <- function(x) as.numeric(
+    tolower(as.character(x)) %in% c("1","yes","y","true","t"))
+  df |>
+    pivot_longer(all_of(vars), names_to = "ae", values_to = "val") |>
+    mutate(val_num = to_numeric(val)) |>
+    group_by({{ grp }}, ae) |>
+    summarise(rate = mean(val_num, na.rm = TRUE), .groups = "drop") |>
+    ggplot(aes(ae, rate, fill = {{ grp }})) +
+      geom_col(position = "dodge") +
+      scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+      labs(x = NULL, y = "% of patients", fill = NULL) +
+      coord_flip()
+}
+
+pairwise_cat_all <- function(df, vars, grp) {
+  tbls <- lapply(vars, \(v) pairwise_cat(df, v, grp))
+  html <- vapply(tbls, knitr::knit_print, character(1))
+  knitr::asis_output(paste(html, collapse = "\n\n"))
+}
+
+```
+
+
+# Executive summary
+
+```{r}
+
+# variables to include in descriptives
+desc_vars <- c(
+  "sex",
+  "age_at_form_start",
+  "severity",
+  "intensive_care",                 # ICU during index admission
+  "pancreatic_complication",        # baseline status
+  "organ_failure",                  # baseline status
+  "terapy_group"
+)
+
+# Core safety endpoints
+safety_vars <- c(
+  "pancreatic_complication",
+  "organ_failure",
+  "infection",
+  "fever",
+  "o2_need",
+  "thrombosis",
+  "dyspnoe",
+  "tachycardia",
+  "deterioration_of_kidney_function",
+  "plasmapheresis_related_complications",
+  "in_hospital_mortality",
+  "post_discharge_mortality" 
+)
+
+# mITT vs. as-treated Ns
+mitt_n <- dat |> count(random_group,  name = "n")
+as_t_n <- dat |> count(terapy_group, name = "n")
+
+# Overall table (for p-values)
+exec_tbl <- summarise_by_group(dat, safety_vars, "random_group")
+
+raw_min <- exec_tbl$table_body |>
+            filter(variable %in% safety_vars) |>
+            summarise(min = min(as.numeric(p.value), na.rm = TRUE)) |>
+            pull(min)
+
+
+```
+
+Data cut: `r nrow(dat)` patients (`r format(Sys.Date(), "%d %b %Y")`).
+Randomised (mITT): `r paste(mitt_n$random_group, mitt_n$n, sep=": ", collapse=" • ")`
+As-treated exposure: `r paste(as_t_n$terapy_group, as_t_n$n, sep=": ", collapse=" • ")`
+
+Eleven prespecified safety signals were screened with two-sided Fisher’s exact tests (α = 0.05, no multiplicity adjustment required for safety monitoring).
+Smallest unadjusted p: `r scales::pvalue(raw_min, accuracy=.001)`
+
+Two tests reached the 5 % level, signalling inhomogeneity by the mITT definition:
+
+ - Tachycardia (pairwise test confirms the difference between plasmapheresis vs. insulin groups, as in insulin group had more frequent occurrence compared to the plasmapheresis group)
+ - Plasmapheresis-related complications (pairwise test confirms the difference between plasmapheresis vs. insulin groups, as in plasmapheresis group had more frequent occurrence compared to the plasmapheresis group)
+
+
+*Statistics alone cannot determine safety.* Investigators and the DSMB must weigh these results together with clinical judgement, seriousness of events, biological plausibility, and all other accrued evidence.
+
+The review of the individual patient data is recommended to investigate the clinical relevance of the apparent differences concerning the two AEs mentioned above.
+
+To note, this analysis was made only after the first 46 patients across three groups, and as such, only very marked differences might have been detected. While not planned in the Protocol at this time, but further safety analyses may yield better results in the future, as more patients are enrolled and more data are collected; a repeat analysis after ~50% may be considered.
+
+# One-page adverse event overview
+
+
+```{r}
+
+tbl_ae   <- summarise_by_group(dat, safety_vars, "random_group")
+tbl_ae
+
+plot_ae_bar(dat, safety_vars, random_group)
+
+
+
+
+```
+
+# Detailed analyses
+
+## mITT analyses
+
+### Statistics per AE
+
+```{r}
+
+summarise_by_group(dat, safety_vars, "random_group")
+
+
+pairwise_cat_all(dat, safety_vars, "random_group")
+
+  
+```
+
+
+### Descriptive statistics by group and overall
+
+```{r}
+
+dat %>%
+  select(desc_vars, random_group) %>%
+tbl_summary(.,
+  by       = random_group,
+  missing  = "no",
+  type     = list(all_continuous() ~ "continuous2",
+                  all_categorical() ~ "categorical")
+) |>
+  add_overall() |>
+  bold_labels()
+
+```
+
+
+## By Treatment analyses
+
+### Statistics per AE
+```{r, results='asis'}
+
+summarise_by_group(dat, safety_vars, "terapy_group")
+
+
+pairwise_cat_all(dat, safety_vars, "terapy_group")
+
+```
+
+
+### Descriptive statistics by group and overall
+```{r}
+
+dat %>%
+  select(desc_vars, random_group) %>%
+tbl_summary(.,
+  by       = terapy_group,
+  missing  = "no",
+  type     = list(all_continuous() ~ "continuous2",
+                  all_categorical() ~ "categorical")
+) |>
+  add_overall() |>
+  bold_labels()
+
+```
+
+## Descriptive statistics (whole cohort, no grouping)
+
+```{r}
+
+dat %>%
+  select(desc_vars, random_group) %>%
+      tbl_summary(.,
+      type     = list(all_continuous() ~ "continuous2",
+                      all_categorical() ~ "categorical"),
+      missing  = "no"
+    ) |>
+      bold_labels()
+
+```
+

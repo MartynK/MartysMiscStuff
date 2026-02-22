@@ -1,0 +1,29 @@
+{
+  "title": "20180929_180955.jpg",
+  "description": "",
+  "imageViews": "4",
+  "creationTime": {
+    "timestamp": "1613099771",
+    "formatted": "Feb 12, 2021, 3:16:11 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1538237395",
+    "formatted": "Sep 29, 2018, 4:09:55 PM UTC"
+  },
+  "geoData": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNQCxr2K0HkvQWfQd5mNrqKmXtbUZztYD2CDgzf",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

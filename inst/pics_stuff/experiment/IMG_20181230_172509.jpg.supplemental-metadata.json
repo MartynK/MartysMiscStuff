@@ -1,0 +1,36 @@
+{
+  "title": "IMG_20181230_172509.jpg",
+  "description": "",
+  "imageViews": "3",
+  "creationTime": {
+    "timestamp": "1612094954",
+    "formatted": "Jan 31, 2021, 12:09:14 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1546187109",
+    "formatted": "Dec 30, 2018, 4:25:09 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.442777799999995,
+    "longitude": 19.134999999999998,
+    "altitude": 159.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.442777799999995,
+    "longitude": 19.134999999999998,
+    "altitude": 159.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipMt0M_ykrfb0pk4KAp58UNBaQmpE2bhVUEz-NAv",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

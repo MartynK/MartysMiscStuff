@@ -1,0 +1,36 @@
+{
+  "title": "20181009_195751.mp4",
+  "description": "",
+  "imageViews": "5",
+  "creationTime": {
+    "timestamp": "1613101526",
+    "formatted": "Feb 12, 2021, 3:45:26 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1539108208",
+    "formatted": "Oct 9, 2018, 6:03:28 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4429,
+    "longitude": 19.135099999999998,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4429,
+    "longitude": 19.135099999999998,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNmPNuNX7iLJqGd5KF9pjRul4vHkhuaRBkCnLd8",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

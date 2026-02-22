@@ -1,0 +1,36 @@
+{
+  "title": "20181211_174334.jpg",
+  "description": "",
+  "imageViews": "4",
+  "creationTime": {
+    "timestamp": "1612094863",
+    "formatted": "Jan 31, 2021, 12:07:43 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1544546613",
+    "formatted": "Dec 11, 2018, 4:43:33 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.518333299999995,
+    "longitude": 19.0647222,
+    "altitude": 162.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.518333299999995,
+    "longitude": 19.0647222,
+    "altitude": 162.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipOMplaAm1jekU0N_NduZ7g6HdiHUEhA0RzYjUm5",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

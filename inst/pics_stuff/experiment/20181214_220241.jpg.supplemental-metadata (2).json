@@ -1,0 +1,36 @@
+{
+  "title": "20181214_220241.jpg",
+  "description": "",
+  "imageViews": "2",
+  "creationTime": {
+    "timestamp": "1613099931",
+    "formatted": "Feb 12, 2021, 3:18:51 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1544821361",
+    "formatted": "Dec 14, 2018, 9:02:41 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.5338889,
+    "longitude": 21.6213889,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.5338889,
+    "longitude": 21.6213889,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNRjPkkN66qUBDZZ9JuIJhtrSocQzlpr5cEn3WF",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

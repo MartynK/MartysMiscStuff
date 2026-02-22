@@ -1,0 +1,36 @@
+{
+  "title": "20181024_193914.jpg",
+  "description": "",
+  "imageViews": "9",
+  "creationTime": {
+    "timestamp": "1612094795",
+    "formatted": "Jan 31, 2021, 12:06:35 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1540402754",
+    "formatted": "Oct 24, 2018, 5:39:14 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.495555599999996,
+    "longitude": 19.0702778,
+    "altitude": 162.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.495555599999996,
+    "longitude": 19.0702778,
+    "altitude": 162.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipPN8-jOR8Loq0FiG0toPOTXfwkIkl932A4iUoF2",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

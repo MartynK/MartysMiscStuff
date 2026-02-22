@@ -1,0 +1,36 @@
+{
+  "title": "IMG_20181221_101814_HDR.jpg",
+  "description": "",
+  "imageViews": "7",
+  "creationTime": {
+    "timestamp": "1612094923",
+    "formatted": "Jan 31, 2021, 12:08:43 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1545383892",
+    "formatted": "Dec 21, 2018, 9:18:12 AM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": -0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipMjg09NECM9kYyvBg3IM8tqi1zkV49btT7WKKMy",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

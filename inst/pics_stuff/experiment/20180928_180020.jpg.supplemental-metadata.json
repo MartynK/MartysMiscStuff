@@ -1,0 +1,36 @@
+{
+  "title": "20180928_180020.jpg",
+  "description": "",
+  "imageViews": "8",
+  "creationTime": {
+    "timestamp": "1612094524",
+    "formatted": "Jan 31, 2021, 12:02:04 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1538172020",
+    "formatted": "Sep 28, 2018, 10:00:20 PM UTC"
+  },
+  "geoData": {
+    "latitude": 43.6458333,
+    "longitude": -79.3794444,
+    "altitude": 37.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 43.6458333,
+    "longitude": -79.3794444,
+    "altitude": 37.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipMwXxUYcqVARKzMG9_v6gAiubmoGarXrc9oeXkl",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

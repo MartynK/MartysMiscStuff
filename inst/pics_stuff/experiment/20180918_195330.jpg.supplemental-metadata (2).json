@@ -1,0 +1,36 @@
+{
+  "title": "20180918_195330.jpg",
+  "description": "",
+  "imageViews": "6",
+  "creationTime": {
+    "timestamp": "1613099734",
+    "formatted": "Feb 12, 2021, 3:15:34 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1537293210",
+    "formatted": "Sep 18, 2018, 5:53:30 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.5133333,
+    "longitude": 19.057499999999997,
+    "altitude": -0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.5133333,
+    "longitude": 19.057499999999997,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipOiyUtQTo053NNV20lE2eVmT0TELA9LgPPlYlf0",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

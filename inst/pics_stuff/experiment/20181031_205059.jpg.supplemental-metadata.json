@@ -1,0 +1,36 @@
+{
+  "title": "20181031_205059.jpg",
+  "description": "",
+  "imageViews": "8",
+  "creationTime": {
+    "timestamp": "1612094818",
+    "formatted": "Jan 31, 2021, 12:06:58 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1541015458",
+    "formatted": "Oct 31, 2018, 7:50:58 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": -0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipP4B6N5nWkSkJsNHkurGmVPKf_4lYM7mkcu2aFV",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

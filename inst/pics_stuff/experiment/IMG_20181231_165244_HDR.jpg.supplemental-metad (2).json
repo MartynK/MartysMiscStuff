@@ -1,0 +1,36 @@
+{
+  "title": "IMG_20181231_165244_HDR.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1613100018",
+    "formatted": "Feb 12, 2021, 3:20:18 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1546271561",
+    "formatted": "Dec 31, 2018, 3:52:41 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4430556,
+    "longitude": 19.134999999999998,
+    "altitude": 145.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4430556,
+    "longitude": 19.134999999999998,
+    "altitude": 145.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipP4jmA4U-yO6AgjoZlsbjl7qQIGiSCWva8Di66J",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

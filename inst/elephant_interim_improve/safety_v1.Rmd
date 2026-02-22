@@ -1,0 +1,1025 @@
+---
+title: "Elephant safety"
+author: "Farkas Nelli"
+date: "`r Sys.Date()`"
+
+output: rmdformats::downcute
+# output:
+#   html_document: 
+#     toc: no
+#     toc_float:
+#       collapsed: yes
+#       smooth_scrolled: yes
+#     toc_depth: 6
+lang: hu-hu
+css: downcute.css
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE,
+                      comment = "",
+                      prompt = FALSE,
+                      fig.dim = c(9, 8),
+                      #cache = T,
+                      out.width = "79%", # képméret
+                      fig.align = 'center'
+                      )
+
+library(readxl)
+library(writexl)
+#library(xlsx)
+library(foreign)
+library(devEMF)
+library(kableExtra)
+library(gtsummary)
+#library(splines) # ggplot smooth
+#library(ggpol) # korfa
+#library(ggh4x) # korfa
+library(hablar) # convert
+library(dunn.test)
+library(xfun) # gsub()
+#library(nlme) # lme()
+library(knitr)
+#library(vioplot)
+#library(lubridate)
+library(magrittr) # %$% 
+#library(psych) # Cohen D
+#library(plyr)
+#library(nlme) # gls()
+#library(moderndive) # geom_categorical_model()
+#library(car) # vif()
+#library(moonBook) # ggPredict
+#library(ggiraphExtra) # ggPredict
+#library(party) # decision tree
+library(ggplot2)
+#library(survminer)
+#library(survival)
+#library(pROC)
+library(lattice)
+#library(hardhat)
+#library(caret)
+library(bootLR)
+#library(corrplot)
+library(tidyverse)
+
+
+rm(list=ls())
+
+#source("D:/Z/Stat/functions.R")
+
+#options(knitr.kable.NA = '')
+
+saveemf <- F
+incTF <- T
+evalTF <- T
+
+#table <- read_xlsx(path =  "E:/munka/számolások/Balikó Anett- Ritter #Zsombor/table_v2.xlsx")
+#myfile <- "csipoprotezis_statra.xlsx"
+
+
+
+myfile<- "ELEFANT_SAFETY_stat.xlsx"
+
+rel_path1 <- paste0(getwd(), "/Figures/")
+rel_path2 <- paste0(getwd(), "/Tables/")
+
+```
+
+
+```{r beolvasás, beállítások}
+
+ds_full <- read_xlsx(myfile, 
+                     #.name_repair = "universal",
+                     na = c("999999", "888888", "", "?", "NA"),
+                     col_names = T, 
+                     sheet = "stat", 
+                     #range = "A2:BQ2463", 
+                     #skip = 1
+                    ) %>% 
+    select_all(~gsub(" ","_",.)) %>% 
+    select_all(~gsub("-","_",.)) %>% 
+    select_all(~gsub("/","_",.)) %>% 
+    select_all(~gsub("\\?"," ",.)) %>% 
+  select_all(~gsub("\\.","",.))  
+
+ds_full <- ds_full %>% 
+ # mutate_if(sapply(ds_full, is.character), as.factor) %>% 
+  mutate_at(c( 3,6, 7, 12, 13, 15, 17, 19, 24, 26,31, 34, 35, 38, 41, 42), as.factor) #%>% 
+  # mutate_at(c( 1,32, 39), as.character) %>% 
+  # mutate_at(c(56), as.numeric) 
+  
+  
+  
+  # mutate(Szakmai_tapasztalat =factor(Szakmai_tapasztalat)) %>% 
+  # mutate(Szakmai_tapasztalat=fct_relevel(Szakmai_tapasztalat,c("0-5 év", "5-10 év", "10-15 év", "15-20 év", 
+  #                                                   "20-25 év", "25-30 év", "30-35 év", "35-40 év","Több, mint 40 év"))) %>% 
+  # mutate(Képzés =factor(Képzés)) %>% 
+  # mutate(Képzés=fct_relevel(Képzés,c("Nem", "<1 hét", "Több, mint 1 hét"))) %>% 
+  # mutate(Statim_recept_félév =factor(Statim_recept_félév)) %>% 
+  # mutate(Statim_recept_félév=fct_relevel(Statim_recept_félév,c("Nem volt rá példa", "1-2 alkalommal", "3-5 alkalommal", "6-10 alkalommal", "11-15 alkalommal")))
+
+# ds_full <- ds_full %>% 
+#   mutate_at(-c( 2,7), as.factor) #%>% 
+#   #mutate_if(~ (n_distinct(.) < 10), as.factor) %>% 
+#  # mutate_at(c(16,17), as.numeric)
+# 
+ # ds_full$Szakmai_tapasztalat_1 <- recode(ds_full$Szakmai_tapasztalat, "0-5 év" ="0-5 év", "5-10 év"="5-30 év", "10-15 év"="5-30 év","15-20 év" = "5-30 év", "20-25 év"= "5-30 év", "25-30 év"= "5-30 év" , "30-35 év" = "több, mint 30 év", "35-40 év" = "több, mint 30 év",  "Több, mint 40 év"="több, mint 30 év")
+ # 
+ # ds_full$Szakmai_tapasztalat_2 <- recode(ds_full$Szakmai_tapasztalat, "0-5 év" ="0-15 év", "5-10 év"="0-15 év", "10-15 év"="0-15 év","15-20 év" = "15-30 év", "20-25 év"= "15-30 év", "25-30 év"= "15-30 év" , "30-35 év" = "több, mint 30 év", "35-40 év" ="több, mint 30 év",  "Több, mint 40 év"="több, mint 30 év")
+# 
+# ds_PM <- ds_full %>% 
+#   filter(Group == "PM")
+# 
+# ds_PM_PML <- ds_full %>% 
+#   filter (Group != "DM")
+# 
+# ds_DM<- ds_full %>% 
+#   filter (Group == "DM")
+# 
+# ds_PM_DM <- ds_full %>% 
+#   filter(Group != "PML")
+
+```
+
+
+ 
+# **_Leíró statisztika_** 
+
+
+
+```{r leíró teljes}
+
+set.seed(666)
+ ds_full %>%  
+   select(
+     #patient_ID,
+    # internal_patient_number,
+      sex,
+    # date_of_birth,
+      age_at_form_start,
+      random_group,
+      terapy_group,
+      #time,
+      #other treatment,
+      intensive_care,
+      pancreatic_complication,
+      organ_failure,
+    # organ,
+      in_hospital_mortality,
+      severity,
+      post_discharge_mortality,
+      infection,
+      fever,
+      O2_need,
+      thrombosis,
+    # dyspnoe,
+      tachycardia,
+      deterioration_of_kidney_function,
+      plasmapheresis_related_complications
+) %>% 
+         
+         
+ # mutate(Transzferrin = as.numeric(Transzferrin), 
+  #       TfS = as.numeric(TfS)) %>% 
+  #select_all( ~ gsub("_", " ", .)) %>% 
+
+   tbl_summary(.,
+    #by = AQP1, # split table by group
+    type = list(all_continuous() ~ "continuous2", 
+                all_categorical() ~ "categorical" #,
+                # Testsúly ~ "continuous2",
+                # Testmagasság ~ "continuous2",
+                # Progesteron_pre ~ "continuous2",
+                # Progesteron_post ~ "continuous2",
+                # EM_vastagsága ~ "continuous2"
+                ),
+    statistic = all_continuous() ~ c("{N_nonmiss} ({p_nonmiss}%)", 
+                                     "{mean} ({sd})",
+                                     "{median} ({p25}, {p75})", 
+                                     "{min}; {max}"),
+    digits = all_continuous() ~ 2,
+    #digits = all_continuous() ~ list(c(0,0), c(2,2), c(2, 2, 2), c(2,2)),
+    missing = "ifany", # don't list missing data separately
+    missing_text = "NA"
+  ) %>%
+  #add_ci() %>% 
+  add_n(., statistic = "{N_nonmiss} ({p_nonmiss}%)") %>% # add column with total number (and percentage)                                            of non-missing observations
+  #add_p() %>% 
+  #add_p(.,
+        # include = c(-M, 
+        #             -necr
+        #            ),
+  #       all_continuous() ~ "t.test",
+  #      pvalue_fun = ~ style_pvalue(.x, digits = 3)
+  #      ) %>% # test for a difference between groups
+  #add_q() %>%
+  #add_overall() %>% 
+  # add_p(.,
+  #       test.args = c(Smoking,
+  #                     Diabetes,
+  #                     `Chronic Respiratory Disease`,
+  #                     `Autoimmune Disease`) ~ list(simulate.p.value = T),
+  #       pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
+  # add_stat(fns = all_continuous() ~ my_dunn) %>%
+  #bold_p(t = 0.05) %>% 
+  # modify_header(list(#label ~ "**_Variable_**", 
+  #                    add_stat_1 ~ "**Cohen's d**"
+  #                    )
+  #               ) %>%
+ # modify_header(label = "**_Változók_**") %>% # update the column header
+ # modify_spanning_header(list(c("stat_1", "stat_2", "stat_3", "stat_4", 
+  #                             "stat_5"#, "stat_6"
+  #                              ) ~ "**_AQP1_**" ,
+  #                             c("**0 - 1**", "**0 - 2**", "**1 - 2**"
+  #                               ) ~ "**_Dunn-test_**"
+   #                           )
+  #                       ) %>%
+  modify_caption("**Leíró statisztika-összes adat**") %>%
+  #modify_footnote(update=everthing() ~ NA) %>%
+  bold_labels() #%>% 
+ # separate_p_footnotes() 
+
+```
+
+
+
+# **_összehasonlítások_** {.tabset .tabset-pills} 
+
+## **random group szerint** {.tabset .tabset-pills} 
+
+
+
+```{r random group, out.width="79%", results='asis'}
+ds_abra <- ds_full %>% 
+  select(
+     #patient_ID,
+    # internal_patient_number,
+      sex,
+    # date_of_birth,
+      age_at_form_start,
+      random_group,
+     # terapy_group,
+      #time,
+      #other treatment,
+      intensive_care,
+      pancreatic_complication,
+      organ_failure,
+    # organ,
+      in_hospital_mortality,
+      severity,
+      post_discharge_mortality,
+      infection,
+      fever,
+      O2_need,
+      thrombosis,
+    # dyspnoe,
+      tachycardia,
+      deterioration_of_kidney_function,
+      plasmapheresis_related_complications
+) 
+
+# subs <- levels(ds_abra$Time_To_First_Endocopy_Fact)
+# len <- length(subs)
+# lab <- subs
+# groups_bleeding <- c("LGIB", "NVUGIB", "VUGIB")
+# 
+# cols <- c("darkred", "orangered", "darkgreen")
+
+
+# # calculate skewness to add column to table below
+#   my_skewness <- function(data, variable, ...) {
+#     round(moments::skewness(data[[variable]], na.rm = T), 3)
+#   }
+
+
+for (i in c(1:(ncol(ds_abra)))) {
+
+  if (is.numeric(ds_abra[[i]])) {
+
+    cat(paste0("\n### ", gsub("_", " ", names(ds_abra)[i]), " {.tabset .tabset-pills}  \n  "))
+   # cat(paste0("\n#### All  \n  "))
+
+  if (names(ds_abra)[i] == "sex") {
+    set.seed(666)
+      print(ds_abra %>%
+              select(random_group,
+                     names(.)[i]) %>%
+              #select_all( ~ gsub("_", " ", .)) %>%
+              tbl_summary(.,
+                          by = random_group, # split table by group
+                          type = list(all_continuous() ~ "continuous2",
+                                      all_categorical() ~ "categorical"#,
+                                      #`Rockall Score as continuous` ~ "continuous2"
+                                      ),
+                          statistic = all_continuous() ~ c("{N_nonmiss} ({p_nonmiss}%)",
+                                                           "{mean} ({sd})",
+                                                           "{median} ({p25}, {p75})",
+                                                           "{min}; {max}"),
+                          digits = all_continuous() ~ c(c(0, 2),
+                                                        c(2, 2),
+                                                        c(2, 2, 2),
+                                                        c(2, 2)
+                          ),
+                          missing = "ifany", # don't list missing data separately
+                          missing_text = "NA"
+              ) %>%
+              add_n(., statistic = "{N_nonmiss} ({p_nonmiss}%)") %>% # add column with total number (and percentage)                                            of non-missing observations
+              add_p(test = all_continuous() ~ "aov",
+                    pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
+              bold_p() %>%
+              add_overall() %>%
+              # add_stat(fns = all_continuous() ~ my_skewness) %>%
+              modify_header(all_stat_cols() ~ "**{level}**<br>N = {n} ({style_percent(p)}%)"
+              # , label = "**Variable**"
+              ) %>% # update the column header
+              modify_spanning_header(c("stat_1", "stat_2", "stat_3") ~
+                                       "**comparision**") %>%
+              modify_caption(paste0("**", gsub("_", " ", names(ds_abra)[i]),
+                                    " by 'random group'**")) %>%
+              modify_footnote("stat_0" ~ NA) %>%
+              bold_labels() # %>%
+            # separate_p_footnotes()
+      )
+   } else {
+        set.seed(666)
+        print(ds_abra %>%
+                select(random_group,
+                       names(.)[i]) %>%
+                #select_all( ~ gsub("_", " ", .)) %>%
+                tbl_summary(.,
+                            by = random_group, # split table by group
+                            type = list(all_continuous() ~ "continuous2",
+                                        all_categorical() ~ "categorical"),
+                            statistic = all_continuous() ~ c("{N_nonmiss} ({p_nonmiss}%)",
+                                                             "{mean} ({sd})",
+                                                             "{median} ({p25}, {p75})",
+                                                             "{min}; {max}"),
+                            digits = all_continuous() ~ c(c(0, 2),
+                                                          c(2, 2),
+                                                          c(2, 2, 2),
+                                                          c(2, 2)
+                            ),
+                            missing = "ifany", # don't list missing data separately
+                            missing_text = "NA"
+                ) %>%
+                add_n(., statistic = "{N_nonmiss} ({p_nonmiss}%)") %>% # add column with total number (and percentage)                                            of non-missing observations
+                add_p(test = all_continuous() ~ "aov") %>%
+                bold_p() %>%
+                add_overall() %>%
+                # add_stat(fns = all_continuous() ~ my_skewness) %>%
+                modify_header(all_stat_cols() ~ "**{level}**<br>N = {n} ({style_percent(p)}%)"
+                # , label = "**Variable**"
+                ) %>% # update the column header
+                modify_spanning_header(c("stat_1", "stat_2", "stat_3") ~
+                                         "**Random group**") %>%
+                modify_caption(paste0("**", gsub("_", " ", names(ds_abra)[i]),
+                                      " by 'Random group'**")) %>%
+                modify_footnote("stat_0" ~ NA) %>%
+                bold_labels() # %>%
+              # separate_p_footnotes()
+        )
+      }
+
+    # Post-hoc, Tukey for anova
+      myaov <- aov(ds_abra[[i]] ~ as.factor(ds_abra$random_group))
+
+      cat("  \n")
+
+      if (summary(myaov)[[1]][1, 5] < 0.05) {
+        # res <- lapply(1, function(x) {
+        #   knitr::knit_child(text = c('',
+        #                              '```{r }',
+        #                                #'summary(mytest)',
+        #                                'print(TukeyHSD(myaov))',
+        #                              '```',
+        #                              ''
+        #                              ),
+        #                     envir = environment(),
+        #                     quiet = TRUE )
+        #   })
+        # cat(unlist(res), sep = '\n')
+        # 
+        # cat("  \n")
+
+        myposthoc <- TukeyHSD(myaov) 
+
+        myposthoc <- as.data.frame(myposthoc[[1]]) %>%
+          rownames_to_column(., var = "Comparison")
+
+        myposthoc <- myposthoc %>%
+          mutate_at(vars(2:4), ~ round(.x, 2)) %>%
+          mutate_at(vars(5), ~ ifelse(.x < 0.001,
+                                      "< 0.001",
+                                      round(.x, 3)
+          )
+          )
+
+        #myposthoc[,-1] <- round(myposthoc[,-1], 3)
+        myposthoc[, 5] <- cell_spec(myposthoc[, 5],
+                                          color = ifelse(((myposthoc[, 5] < 0.05) |
+                                                          (myposthoc[, 5] == "< 0.001")),
+                                                         "red", "green"))
+        print(myposthoc %>%
+          kbl(., digits = 3, booktabs = T, align = "c", valign = "c",
+              caption = "Post-hoc test  \n  (pairwise comparission  \n  'Tukey-test')",
+              escape = F) %>%
+          kable_styling(bootstrap_options = "striped", fixed_thead = T,
+                        full_width = F, 
+                        position = "center",
+                        #position = "float_left",
+                        font_size = 14) %>%
+          kable_classic(lightable_options = "hover",
+                        html_font = "sans-serif",
+                        full_width = F) %>%
+          column_spec(., 5, bold = T, background = "gainsboro") %>%
+          row_spec(., 0, bold = T)
+        )
+
+      }
+
+
+      cat("  \n") 
+
+   # cat("<br>")
+}}
+
+```
+
+
+
+```{r deskriptiv kategorikus, results='asis', out.width="79%", eval=evalTF}
+
+#ds_abra <- ds_teljes_898
+
+subs <- levels(ds_abra$random_group)
+#groups_bleeding <- c("LGIB", "NVUGIB", "VUGIB")
+
+#cols <- c("darkred", "indianred", "darkgreen")
+
+for (i in c(1:2,4:(ncol(ds_abra)))) {
+
+    if(is.factor(ds_abra[[i]])) {
+
+      cat(paste0("\n### ", gsub("_", " ", names(ds_abra)[i]), " {.tabset .tabset-pills}  \n  "))
+      
+     # cat(paste0("\n##### All  \n  "))
+      
+      set.seed(666)
+      mytable <- try(ds_abra %>%
+                       select(random_group,
+                              names(.)[i]) %>%
+                       select_all( ~ gsub("_", " ", .)) %>%
+                       tbl_summary(.,
+                                   by = `random group`, # split table by group
+                                   type = list(all_continuous() ~ "continuous2",
+                                               all_categorical() ~ "categorical"),
+                                   statistic = all_continuous() ~ c("{N_nonmiss} ({p_nonmiss}%)",
+                                                                    "{mean} ({sd})",
+                                                                    "{median} ({p25}, {p75})",
+                                                                    "{min}; {max}"),
+                                   digits = all_continuous() ~ c(c(0, 2),
+                                                                 c(2, 2),
+                                                                 c(2, 2, 2),
+                                                                 c(2, 2)
+                                   ),
+                                   #digits = all_continuous() ~ list(c(0,0), c(2,2), c(2, 2, 2), c(2,2)),
+                                   missing = "ifany", # don't list missing data separately
+                                   missing_text = "NA"
+                       ) %>%
+                       add_n(., statistic = "{N_nonmiss} ({p_nonmiss}%)") %>% # add column with total number (and percentage)                                            of non-missing observations
+                       add_p(#test.args = list(c(`Source Of Bleeding Merged`, Diabetes) ~ 
+                         #list(simulate.p.value = T)), nemjó???
+                         pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
+                       bold_p() %>%
+                       add_overall() %>%
+                       modify_header(all_stat_cols() ~ "**{level}**<br>N = {n} ({style_percent(p)}%)"
+                                     # , label = "**Variable**"
+                       ) %>% # update the column header
+                       modify_spanning_header(c("stat_1", "stat_2", "stat_3") ~
+                                                "**random group**") %>%
+                       modify_caption(paste0("**", gsub("_", " ", names(ds_abra)[i]),
+                                             " by 'random group*")) %>%
+                       modify_footnote("stat_0" ~ NA) %>%
+                       bold_labels() # %>%
+                     # separate_p_footnotes()
+                     )
+
+      if (mytable$table_body$p.value[1] > 0.05) {
+        print(mytable)
+      } else {
+          set.seed(666)
+          print(mytable <- ds_abra %>%
+                  select(random_group,
+                         names(.)[i]) %>%
+                  select_all( ~ gsub("_", " ", .)) %>%
+                  tbl_summary(.,
+                              by = `random group`, # split table by group
+                              type = list(all_continuous() ~ "continuous2",
+                                          all_categorical() ~ "categorical"),
+                              statistic = all_continuous() ~ c("{N_nonmiss} ({p_nonmiss}%)",
+                                                               "{mean} ({sd})",
+                                                               "{median} ({p25}, {p75})",
+                                                               "{min}; {max}"),
+                              digits = all_continuous() ~ c(c(0, 2),
+                                                            c(2, 2),
+                                                            c(2, 2, 2),
+                                                            c(2, 2)
+                              ),
+                              #digits = all_continuous() ~ list(c(0,0), c(2,2), c(2, 2, 2), c(2,2)),
+                              missing = "ifany", # don't list missing data separately
+                              missing_text = "NA"
+                  ) %>%
+                  add_n(., statistic = "{N_nonmiss} ({p_nonmiss}%)") %>% # add column with total number (and percentage)                                            of non-missig observations
+                  add_p(test.args = c(1) ~ list(simulate.p.value = T), 
+                        pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
+                  bold_p() %>%
+                  add_overall() %>%
+                  modify_header(all_stat_cols() ~ "**{level}**<br>N = {n} ({style_percent(p)}%)"
+                              # , label = "**Variable**"
+                  ) %>% # update the column header
+                  modify_spanning_header(c("stat_1", "stat_2", "stat_3") ~
+                                           "**random group**") %>%
+                  modify_caption(paste0("**", gsub("_", " ", names(ds_abra)[i]),
+                                        " by 'random group'**")) %>%
+                  modify_footnote("stat_0" ~ NA) %>%
+                  bold_labels() # %>%
+                  # separate_p_footnotes()
+        )
+      }
+      
+      
+      # my_tblsummary_fisher_simulate(ds_abra, Diabetes) # itt valami nem jó a függvénnyel...
+      
+      
+      # Post-hoc, Pairwise nominal independence
+         if (mytable$table_body$p.value[1] < 0.05) {
+        #   if (#!is.na(mytable$table_body$test_result[[1]]$df_result$method) &
+        #         mytable$table_body$test_result[[1]]$df_result$method == 
+        #           "Fisher's Exact Test for Count Data with simulated p-value\n\t (based on 2000 replicates)"
+            #   ) {
+            myposthoc <- rcompanion::pairwiseNominalIndependence(table(ds_abra[[i]],
+                                                                       ds_abra$random_group),
+                                                                 fisher = T,
+                                                                 gtest = F,
+                                                                 chisq = F,
+                                                                 compare = "column",
+                                                                 simulate.p.value = T
+            )
+          } else {
+              myposthoc <- rcompanion::pairwiseNominalIndependence(table(ds_abra[[i]],
+                                                                         ds_abra$random_group),
+                                                                   fisher = T,
+                                                                   gtest = F,
+                                                                   chisq = F,
+                                                                   compare = "column"
+              )
+            }
+
+          cat("  \n")
+
+          #   res <- lapply(1, function(x) {
+          #     knitr::knit_child(text = c('',
+          #                                '```{r }',
+          #                                  'print(myposthoc)',
+          #                                '```',
+          #                                ''
+          #                                ),
+          #                       envir = environment(),
+          #                       quiet = TRUE )
+          #     })
+          # cat(unlist(res), sep = '\n')
+          # 
+          # cat("  \n")
+
+        myposthoc <- myposthoc %>%
+          mutate_at(vars(2:3), ~ ifelse(.x < 0.001,
+                                        "< 0.001",
+                                        round(.x, 3)
+                                        )
+          )
+
+        #myposthoc[,-1] <- round(myposthoc[,-1], 3)
+        myposthoc[, 3] <- cell_spec(myposthoc[, 3],
+                                          color = ifelse(((myposthoc[, 3] < 0.05) |
+                                                          (myposthoc[, 3] == "< 0.001")),
+                                                         "red", "green"))
+
+        print(myposthoc[, 1:3] %>%
+          kbl(., digits = 3, booktabs = T, align = "c", valign = "c",
+              caption = "Post-hoc teszt  \n  (páronkénti összehasonlítás  \n  'Benjamini-Hochberg' korrekcióval)",
+              escape = F) %>%
+          kable_styling(bootstrap_options = "striped", fixed_thead = T,
+                        full_width = F, position = "center",
+                        font_size = 14) %>%
+          kable_classic(lightable_options = "hover",
+                        html_font = "sans-serif",
+                        full_width = F) %>%
+          column_spec(., 3, bold = T, background = "gainsboro") %>%
+          row_spec(., 0, bold = T)
+        )
+
+        }
+
+      cat("  \n")
+}
+#}
+
+
+
+```
+
+
+
+
+
+## **terapy group szerint** {.tabset .tabset-pills} 
+
+
+
+```{r terapy group, out.width="79%", results='asis'}
+ds_abra <- ds_full %>% 
+  select(
+     #patient_ID,
+    # internal_patient_number,
+      sex,
+    # date_of_birth,
+      age_at_form_start,
+     # random_group,
+      terapy_group,
+      #time,
+      #other treatment,
+      intensive_care,
+      pancreatic_complication,
+      organ_failure,
+    # organ,
+      in_hospital_mortality,
+      severity,
+      post_discharge_mortality,
+      infection,
+      fever,
+      O2_need,
+      thrombosis,
+    # dyspnoe,
+      tachycardia,
+      deterioration_of_kidney_function,
+      plasmapheresis_related_complications
+) 
+
+# subs <- levels(ds_abra$Time_To_First_Endocopy_Fact)
+# len <- length(subs)
+# lab <- subs
+# groups_bleeding <- c("LGIB", "NVUGIB", "VUGIB")
+# 
+# cols <- c("darkred", "orangered", "darkgreen")
+
+
+# # calculate skewness to add column to table below
+#   my_skewness <- function(data, variable, ...) {
+#     round(moments::skewness(data[[variable]], na.rm = T), 3)
+#   }
+
+
+for (i in c(1:(ncol(ds_abra)))) {
+
+  if (is.numeric(ds_abra[[i]])) {
+
+    cat(paste0("\n### ", gsub("_", " ", names(ds_abra)[i]), " {.tabset .tabset-pills}  \n  "))
+   # cat(paste0("\n#### All  \n  "))
+
+  if (names(ds_abra)[i] == "sex") {
+    set.seed(666)
+      print(ds_abra %>%
+              select(terapy_group,
+                     names(.)[i]) %>%
+              #select_all( ~ gsub("_", " ", .)) %>%
+              tbl_summary(.,
+                          by = terapy_group, # split table by group
+                          type = list(all_continuous() ~ "continuous2",
+                                      all_categorical() ~ "categorical"#,
+                                      #`Rockall Score as continuous` ~ "continuous2"
+                                      ),
+                          statistic = all_continuous() ~ c("{N_nonmiss} ({p_nonmiss}%)",
+                                                           "{mean} ({sd})",
+                                                           "{median} ({p25}, {p75})",
+                                                           "{min}; {max}"),
+                          digits = all_continuous() ~ c(c(0, 2),
+                                                        c(2, 2),
+                                                        c(2, 2, 2),
+                                                        c(2, 2)
+                          ),
+                          missing = "ifany", # don't list missing data separately
+                          missing_text = "NA"
+              ) %>%
+              add_n(., statistic = "{N_nonmiss} ({p_nonmiss}%)") %>% # add column with total number (and percentage)                                            of non-missing observations
+              add_p(test = all_continuous() ~ "aov",
+                    pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
+              bold_p() %>%
+              add_overall() %>%
+              # add_stat(fns = all_continuous() ~ my_skewness) %>%
+              modify_header(all_stat_cols() ~ "**{level}**<br>N = {n} ({style_percent(p)}%)"
+              # , label = "**Variable**"
+              ) %>% # update the column header
+              modify_spanning_header(c("stat_1", "stat_2", "stat_3") ~
+                                       "**comparision**") %>%
+              modify_caption(paste0("**", gsub("_", " ", names(ds_abra)[i]),
+                                    " by 'terapy group'**")) %>%
+              modify_footnote("stat_0" ~ NA) %>%
+              bold_labels() # %>%
+            # separate_p_footnotes()
+      )
+   } else {
+        set.seed(666)
+        print(ds_abra %>%
+                select(terapy_group,
+                       names(.)[i]) %>%
+                #select_all( ~ gsub("_", " ", .)) %>%
+                tbl_summary(.,
+                            by = terapy_group, # split table by group
+                            type = list(all_continuous() ~ "continuous2",
+                                        all_categorical() ~ "categorical"),
+                            statistic = all_continuous() ~ c("{N_nonmiss} ({p_nonmiss}%)",
+                                                             "{mean} ({sd})",
+                                                             "{median} ({p25}, {p75})",
+                                                             "{min}; {max}"),
+                            digits = all_continuous() ~ c(c(0, 2),
+                                                          c(2, 2),
+                                                          c(2, 2, 2),
+                                                          c(2, 2)
+                            ),
+                            missing = "ifany", # don't list missing data separately
+                            missing_text = "NA"
+                ) %>%
+                add_n(., statistic = "{N_nonmiss} ({p_nonmiss}%)") %>% # add column with total number (and percentage)                                            of non-missing observations
+                add_p(test = all_continuous() ~ "aov") %>%
+                bold_p() %>%
+                add_overall() %>%
+                # add_stat(fns = all_continuous() ~ my_skewness) %>%
+                modify_header(all_stat_cols() ~ "**{level}**<br>N = {n} ({style_percent(p)}%)"
+                # , label = "**Variable**"
+                ) %>% # update the column header
+                modify_spanning_header(c("stat_1", "stat_2", "stat_3") ~
+                                         "**terapy group**") %>%
+                modify_caption(paste0("**", gsub("_", " ", names(ds_abra)[i]),
+                                      " by 'terapy group'**")) %>%
+                modify_footnote("stat_0" ~ NA) %>%
+                bold_labels() # %>%
+              # separate_p_footnotes()
+        )
+      }
+
+    # Post-hoc, Tukey for anova
+      myaov <- aov(ds_abra[[i]] ~ as.factor(ds_abra$terapy_group))
+
+      cat("  \n")
+
+      if (summary(myaov)[[1]][1, 5] < 0.05) {
+        # res <- lapply(1, function(x) {
+        #   knitr::knit_child(text = c('',
+        #                              '```{r }',
+        #                                #'summary(mytest)',
+        #                                'print(TukeyHSD(myaov))',
+        #                              '```',
+        #                              ''
+        #                              ),
+        #                     envir = environment(),
+        #                     quiet = TRUE )
+        #   })
+        # cat(unlist(res), sep = '\n')
+        # 
+        # cat("  \n")
+
+        myposthoc <- TukeyHSD(myaov) 
+
+        myposthoc <- as.data.frame(myposthoc[[1]]) %>%
+          rownames_to_column(., var = "Comparison")
+
+        myposthoc <- myposthoc %>%
+          mutate_at(vars(2:4), ~ round(.x, 2)) %>%
+          mutate_at(vars(5), ~ ifelse(.x < 0.001,
+                                      "< 0.001",
+                                      round(.x, 3)
+          )
+          )
+
+        #myposthoc[,-1] <- round(myposthoc[,-1], 3)
+        myposthoc[, 5] <- cell_spec(myposthoc[, 5],
+                                          color = ifelse(((myposthoc[, 5] < 0.05) |
+                                                          (myposthoc[, 5] == "< 0.001")),
+                                                         "red", "green"))
+        print(myposthoc %>%
+          kbl(., digits = 3, booktabs = T, align = "c", valign = "c",
+              caption = "Post-hoc test  \n  (pairwise comparission  \n  'Tukey-test')",
+              escape = F) %>%
+          kable_styling(bootstrap_options = "striped", fixed_thead = T,
+                        full_width = F, 
+                        position = "center",
+                        #position = "float_left",
+                        font_size = 14) %>%
+          kable_classic(lightable_options = "hover",
+                        html_font = "sans-serif",
+                        full_width = F) %>%
+          column_spec(., 5, bold = T, background = "gainsboro") %>%
+          row_spec(., 0, bold = T)
+        )
+
+      }
+
+
+      cat("  \n") 
+
+   # cat("<br>")
+}}
+
+```
+
+
+
+```{r deskriptiv terapy cat, results='asis', out.width="79%", eval=evalTF}
+
+#ds_abra <- ds_teljes_898
+
+subs <- levels(ds_abra$terapy_group)
+#groups_bleeding <- c("LGIB", "NVUGIB", "VUGIB")
+
+#cols <- c("darkred", "indianred", "darkgreen")
+
+for (i in c(1:2,4:(ncol(ds_abra)))) {
+
+    if(is.factor(ds_abra[[i]])) {
+
+      cat(paste0("\n### ", gsub("_", " ", names(ds_abra)[i]), " {.tabset .tabset-pills}  \n  "))
+      
+     # cat(paste0("\n##### All  \n  "))
+      
+      set.seed(666)
+      mytable <- try(ds_abra %>%
+                       select(terapy_group,
+                              names(.)[i]) %>%
+                       select_all( ~ gsub("_", " ", .)) %>%
+                       tbl_summary(.,
+                                   by = `terapy group`, # split table by group
+                                   type = list(all_continuous() ~ "continuous2",
+                                               all_categorical() ~ "categorical"),
+                                   statistic = all_continuous() ~ c("{N_nonmiss} ({p_nonmiss}%)",
+                                                                    "{mean} ({sd})",
+                                                                    "{median} ({p25}, {p75})",
+                                                                    "{min}; {max}"),
+                                   digits = all_continuous() ~ c(c(0, 2),
+                                                                 c(2, 2),
+                                                                 c(2, 2, 2),
+                                                                 c(2, 2)
+                                   ),
+                                   #digits = all_continuous() ~ list(c(0,0), c(2,2), c(2, 2, 2), c(2,2)),
+                                   missing = "ifany", # don't list missing data separately
+                                   missing_text = "NA"
+                       ) %>%
+                       add_n(., statistic = "{N_nonmiss} ({p_nonmiss}%)") %>% # add column with total number (and percentage)                                            of non-missing observations
+                       add_p(#test.args = list(c(`Source Of Bleeding Merged`, Diabetes) ~ 
+                         #list(simulate.p.value = T)), nemjó???
+                         pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
+                       bold_p() %>%
+                       add_overall() %>%
+                       modify_header(all_stat_cols() ~ "**{level}**<br>N = {n} ({style_percent(p)}%)"
+                                     # , label = "**Variable**"
+                       ) %>% # update the column header
+                       modify_spanning_header(c("stat_1", "stat_2", "stat_3") ~
+                                                "**terapy group**") %>%
+                       modify_caption(paste0("**", gsub("_", " ", names(ds_abra)[i]),
+                                             " by 'terapy group*")) %>%
+                       modify_footnote("stat_0" ~ NA) %>%
+                       bold_labels() # %>%
+                     # separate_p_footnotes()
+                     )
+
+      if (mytable$table_body$p.value[1] > 0.05) {
+        print(mytable)
+      } else {
+          set.seed(666)
+          print(mytable <- ds_abra %>%
+                  select(terapy_group,
+                         names(.)[i]) %>%
+                  select_all( ~ gsub("_", " ", .)) %>%
+                  tbl_summary(.,
+                              by = `terapy group`, # split table by group
+                              type = list(all_continuous() ~ "continuous2",
+                                          all_categorical() ~ "categorical"),
+                              statistic = all_continuous() ~ c("{N_nonmiss} ({p_nonmiss}%)",
+                                                               "{mean} ({sd})",
+                                                               "{median} ({p25}, {p75})",
+                                                               "{min}; {max}"),
+                              digits = all_continuous() ~ c(c(0, 2),
+                                                            c(2, 2),
+                                                            c(2, 2, 2),
+                                                            c(2, 2)
+                              ),
+                              #digits = all_continuous() ~ list(c(0,0), c(2,2), c(2, 2, 2), c(2,2)),
+                              missing = "ifany", # don't list missing data separately
+                              missing_text = "NA"
+                  ) %>%
+                  add_n(., statistic = "{N_nonmiss} ({p_nonmiss}%)") %>% # add column with total number (and percentage)                                            of non-missig observations
+                  add_p(test.args = c(1) ~ list(simulate.p.value = T), 
+                        pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
+                  bold_p() %>%
+                  add_overall() %>%
+                  modify_header(all_stat_cols() ~ "**{level}**<br>N = {n} ({style_percent(p)}%)"
+                              # , label = "**Variable**"
+                  ) %>% # update the column header
+                  modify_spanning_header(c("stat_1", "stat_2", "stat_3") ~
+                                           "**terapy group**") %>%
+                  modify_caption(paste0("**", gsub("_", " ", names(ds_abra)[i]),
+                                        " by 'terapy group'**")) %>%
+                  modify_footnote("stat_0" ~ NA) %>%
+                  bold_labels() # %>%
+                  # separate_p_footnotes()
+        )
+      }
+      
+      
+      # my_tblsummary_fisher_simulate(ds_abra, Diabetes) # itt valami nem jó a függvénnyel...
+      
+      
+      # Post-hoc, Pairwise nominal independence
+         if (mytable$table_body$p.value[1] < 0.05) {
+        #   if (#!is.na(mytable$table_body$test_result[[1]]$df_result$method) &
+        #         mytable$table_body$test_result[[1]]$df_result$method == 
+        #           "Fisher's Exact Test for Count Data with simulated p-value\n\t (based on 2000 replicates)"
+            #   ) {
+            myposthoc <- rcompanion::pairwiseNominalIndependence(table(ds_abra[[i]],
+                                                                       ds_abra$terapy_group),
+                                                                 fisher = T,
+                                                                 gtest = F,
+                                                                 chisq = F,
+                                                                 compare = "column",
+                                                                 simulate.p.value = T
+            )
+          } else {
+              myposthoc <- rcompanion::pairwiseNominalIndependence(table(ds_abra[[i]],
+                                                                         ds_abra$terapy_group),
+                                                                   fisher = T,
+                                                                   gtest = F,
+                                                                   chisq = F,
+                                                                   compare = "column"
+              )
+            }
+
+          cat("  \n")
+
+          #   res <- lapply(1, function(x) {
+          #     knitr::knit_child(text = c('',
+          #                                '```{r }',
+          #                                  'print(myposthoc)',
+          #                                '```',
+          #                                ''
+          #                                ),
+          #                       envir = environment(),
+          #                       quiet = TRUE )
+          #     })
+          # cat(unlist(res), sep = '\n')
+          # 
+          # cat("  \n")
+
+        myposthoc <- myposthoc %>%
+          mutate_at(vars(2:3), ~ ifelse(.x < 0.001,
+                                        "< 0.001",
+                                        round(.x, 3)
+                                        )
+          )
+
+        #myposthoc[,-1] <- round(myposthoc[,-1], 3)
+        myposthoc[, 3] <- cell_spec(myposthoc[, 3],
+                                          color = ifelse(((myposthoc[, 3] < 0.05) |
+                                                          (myposthoc[, 3] == "< 0.001")),
+                                                         "red", "green"))
+
+        print(myposthoc[, 1:3] %>%
+          kbl(., digits = 3, booktabs = T, align = "c", valign = "c",
+              caption = "Post-hoc teszt  \n  (pairewise comparission  \n  'Benjamini-Hochberg' korrekcióval)",
+              escape = F) %>%
+          kable_styling(bootstrap_options = "striped", fixed_thead = T,
+                        full_width = F, position = "center",
+                        font_size = 14) %>%
+          kable_classic(lightable_options = "hover",
+                        html_font = "sans-serif",
+                        full_width = F) %>%
+          column_spec(., 3, bold = T, background = "gainsboro") %>%
+          row_spec(., 0, bold = T)
+        )
+
+        }
+
+      cat("  \n")
+}
+#}
+
+
+
+```
+
+
+
+
+

@@ -1,0 +1,36 @@
+{
+  "title": "20181215_084215.jpg",
+  "description": "",
+  "imageViews": "13",
+  "creationTime": {
+    "timestamp": "1555564179",
+    "formatted": "Apr 18, 2019, 5:09:39 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1544859735",
+    "formatted": "Dec 15, 2018, 7:42:15 AM UTC"
+  },
+  "geoData": {
+    "latitude": 47.442499999999995,
+    "longitude": 19.1355556,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.442499999999995,
+    "longitude": 19.1355556,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipONUbpjv8xduts7KwicisHLokhLnvtUA95lbhBb",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

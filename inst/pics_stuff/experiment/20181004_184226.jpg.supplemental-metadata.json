@@ -1,0 +1,36 @@
+{
+  "title": "20181004_184226.jpg",
+  "description": "",
+  "imageViews": "11",
+  "creationTime": {
+    "timestamp": "1612094609",
+    "formatted": "Jan 31, 2021, 12:03:29 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1538671346",
+    "formatted": "Oct 4, 2018, 4:42:26 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4430556,
+    "longitude": 19.1352778,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipM09kWNqgxd0NRV3IjXHMzuK2MRXiq-w_y4vD50",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

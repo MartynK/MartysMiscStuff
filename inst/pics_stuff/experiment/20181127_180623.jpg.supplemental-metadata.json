@@ -1,0 +1,36 @@
+{
+  "title": "20181127_180623.jpg",
+  "description": "",
+  "imageViews": "5",
+  "creationTime": {
+    "timestamp": "1612094850",
+    "formatted": "Jan 31, 2021, 12:07:30 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1543338383",
+    "formatted": "Nov 27, 2018, 5:06:23 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.5133333,
+    "longitude": 19.0572222,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.5133333,
+    "longitude": 19.0572222,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipN6bwuiroy7tL4UdHR7s5X0QmG0WqcaJRkHlG4g",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

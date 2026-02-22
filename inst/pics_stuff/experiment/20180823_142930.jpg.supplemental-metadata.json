@@ -1,0 +1,36 @@
+{
+  "title": "20180823_142930.jpg",
+  "description": "",
+  "imageViews": "9",
+  "creationTime": {
+    "timestamp": "1612094456",
+    "formatted": "Jan 31, 2021, 12:00:56 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1535027370",
+    "formatted": "Aug 23, 2018, 12:29:30 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.518333299999995,
+    "longitude": 19.0644444,
+    "altitude": 166.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.518333299999995,
+    "longitude": 19.0644444,
+    "altitude": 166.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipMMW0yl7TtMgqrkCfJXiJS404KwnmfBkO5BrJ2Y",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

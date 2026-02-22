@@ -1,0 +1,36 @@
+{
+  "title": "20180930_122307.jpg",
+  "description": "",
+  "imageViews": "2",
+  "creationTime": {
+    "timestamp": "1613099826",
+    "formatted": "Feb 12, 2021, 3:17:06 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1538324587",
+    "formatted": "Sep 30, 2018, 4:23:07 PM UTC"
+  },
+  "geoData": {
+    "latitude": 45.497222199999996,
+    "longitude": -73.5872222,
+    "altitude": 96.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 45.497222199999996,
+    "longitude": -73.5872222,
+    "altitude": 96.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipOcjuVOb_mgAnTFoMPoKzyzkayQ3CD8X-b9NTpf",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "title": "20181019_195859.jpg",
+  "description": "",
+  "imageViews": "3",
+  "creationTime": {
+    "timestamp": "1613099844",
+    "formatted": "Feb 12, 2021, 3:17:24 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1539971939",
+    "formatted": "Oct 19, 2018, 5:58:59 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.442777799999995,
+    "longitude": 19.1352778,
+    "altitude": -0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.442777799999995,
+    "longitude": 19.1352778,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipN6-pPSsssYS7Vy-CZ4KxGlu9O2ZbZzSL3vHZAd",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

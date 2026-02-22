@@ -1,0 +1,36 @@
+{
+  "title": "IMG_20181225_134053_DRO.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1613099993",
+    "formatted": "Feb 12, 2021, 3:19:53 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1545741653",
+    "formatted": "Dec 25, 2018, 12:40:53 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.5038889,
+    "longitude": 19.022222199999998,
+    "altitude": 175.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.5038889,
+    "longitude": 19.022222199999998,
+    "altitude": 175.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipOSAn9hSeKRq1fyZwRU_4rN8y2_6UkwcNugnI-w",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

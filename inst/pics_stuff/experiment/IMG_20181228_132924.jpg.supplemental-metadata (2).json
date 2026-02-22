@@ -1,0 +1,36 @@
+{
+  "title": "IMG_20181228_132924.jpg",
+  "description": "",
+  "imageViews": "0",
+  "creationTime": {
+    "timestamp": "1613100014",
+    "formatted": "Feb 12, 2021, 3:20:14 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1546000164",
+    "formatted": "Dec 28, 2018, 12:29:24 PM UTC"
+  },
+  "geoData": {
+    "latitude": 47.4430556,
+    "longitude": 19.134999999999998,
+    "altitude": 164.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.4430556,
+    "longitude": 19.134999999999998,
+    "altitude": 164.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipMMdLNu0-VY6YwsyjsvBa-QGLrkhQ643oTpHA3W",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

@@ -57,7 +57,7 @@ get_params <- function( tmax = 2, t12 = 10*60) {
   return( list(K_A = K_A, K_E = K_E))
 }
 
-params <- get_params(tmax = 2, t12 = 10)
+params <- get_params(tmax = 2, t12 = 5)
 profil <- sim_a_profile(K_A. = params$K_A, K_E. = params$K_E,tmax=168)
 
 profil <- profil %>%
@@ -78,19 +78,22 @@ profil %>%
     scale_y_continuous(breaks = c(10))
 
 
-NSUB <- 46
+NSUB <- 100
 
 simmed_vars <- data.frame(sub_id = 1:NSUB,
-                          k_a_sub = K_A + rnorm(NSUB,sd = K_A * 0.2),
-                          k_e_sub = K_E + rnorm(NSUB,sd = K_E * 0.1))
+                          k_a_sub = K_A + rnorm(NSUB,sd = K_A * 0.0),
+                          k_e_sub = K_E + rnorm(NSUB,sd = K_E * 0.0),
+                          V_sub = (70 + (rnorm( NSUB, sd = 15)))^0.75/70^0.75)
 
 out  <- profil[0,]
 out$sub_id <- list()
 for (i in 1:max(simmed_vars$sub_id)) {
 
   act_profil <- sim_a_profile(K_A.=simmed_vars$k_a_sub[i],
-                              K_E.=simmed_vars$k_e_sub[i])
+                              K_E.=simmed_vars$k_e_sub[i],
+                              tmax = 125)
   act_profil$sub_id <- simmed_vars$sub_id[i]
+  act_profil$V_sub <- simmed_vars$V_sub[i]
 
   out <- rbind( out, act_profil)
   #out <- bind_rows( out, act_profil) # "ugyanaz"
@@ -99,7 +102,7 @@ for (i in 1:max(simmed_vars$sub_id)) {
 
 out %>%
   ggplot( data = ., mapping = aes(x = t,
-                                  y = q_plas,
+                                  y = q_plas/V_sub,
                                   group = sub_id,
                                   color = factor(sub_id))) +
     geom_line(linewidth = 1.5) +

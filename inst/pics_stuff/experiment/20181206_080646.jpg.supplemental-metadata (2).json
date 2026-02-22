@@ -1,0 +1,36 @@
+{
+  "title": "20181206_080646.jpg",
+  "description": "",
+  "imageViews": "2",
+  "creationTime": {
+    "timestamp": "1613099912",
+    "formatted": "Feb 12, 2021, 3:18:32 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1544080006",
+    "formatted": "Dec 6, 2018, 7:06:46 AM UTC"
+  },
+  "geoData": {
+    "latitude": 47.442777799999995,
+    "longitude": 19.1352778,
+    "altitude": -0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 47.442777799999995,
+    "longitude": 19.1352778,
+    "altitude": 0.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNWiuZ_0NCll5b8UNkP6C0zUctEWfdi7e8SUdEZ",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

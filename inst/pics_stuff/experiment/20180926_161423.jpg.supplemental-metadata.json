@@ -1,0 +1,36 @@
+{
+  "title": "20180926_161423.jpg",
+  "description": "",
+  "imageViews": "7",
+  "creationTime": {
+    "timestamp": "1612094511",
+    "formatted": "Jan 31, 2021, 12:01:51 PM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1537992863",
+    "formatted": "Sep 26, 2018, 8:14:23 PM UTC"
+  },
+  "geoData": {
+    "latitude": 43.7991667,
+    "longitude": -79.5397222,
+    "altitude": 170.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 43.7991667,
+    "longitude": -79.5397222,
+    "altitude": 170.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNJcecFKJFLs5hHFoaZT9LPv1Csf3cw9WjW5FdR",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "title": "20181219_163709.jpg",
+  "description": "",
+  "imageViews": "2",
+  "creationTime": {
+    "timestamp": "1613099975",
+    "formatted": "Feb 12, 2021, 3:19:35 AM UTC"
+  },
+  "photoTakenTime": {
+    "timestamp": "1545233829",
+    "formatted": "Dec 19, 2018, 3:37:09 PM UTC"
+  },
+  "geoData": {
+    "latitude": 48.2102778,
+    "longitude": 16.375,
+    "altitude": 216.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "geoDataExif": {
+    "latitude": 48.2102778,
+    "longitude": 16.375,
+    "altitude": 216.0,
+    "latitudeSpan": 0.0,
+    "longitudeSpan": 0.0
+  },
+  "url": "https://photos.google.com/photo/AF1QipNXCmL5WrucU51MZk_5IxcngycoKkqQ98pbOuEs",
+  "googlePhotosOrigin": {
+    "mobileUpload": {
+      "deviceFolder": {
+        "localFolderName": ""
+      },
+      "deviceType": "ANDROID_PHONE"
+    }
+  }
+}
